@@ -64,7 +64,7 @@ form.addEventListener("submit", (event) => {
   }, 350);
 });
 
-const EVENT_DATE = new Date("2026-07-24T08:30:00+07:00");
+const EVENT_DATE = new Date("2026-07-24T09:15:00+07:00");
 const cdDays = document.getElementById("cd-days");
 const cdHours = document.getElementById("cd-hours");
 const cdMins = document.getElementById("cd-mins");
