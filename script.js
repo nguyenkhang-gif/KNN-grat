@@ -7,8 +7,6 @@ const messageInput = document.getElementById("guest-message");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const submitter = event.submitter;
-  const answer = submitter ? submitter.dataset.answer : "yes";
   const guestMessage = messageInput.value.trim();
 
   if (GOOGLE_SCRIPT_URL.includes("YOUR_DEPLOYMENT_ID") === false) {
@@ -17,16 +15,13 @@ form.addEventListener("submit", (event) => {
       mode: "no-cors",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({
-        attending: answer,
+        attending: "yes",
         message: guestMessage,
       }),
     }).catch(() => {});
   }
 
-  thanks.textContent =
-    answer === "yes"
-      ? `Cảm ơn bạn đã xác nhận tham dự! Hẹn gặp lại tại lễ tốt nghiệp 🎓`
-      : `Cảm ơn bạn đã phản hồi. Rất tiếc vì không thể gặp bạn hôm đó`;
+  thanks.textContent = "Cảm ơn bạn! Lời nhắn đã được gửi đến KNN 🎓";
 
   thanks.classList.remove("hidden");
   form.classList.add("hidden");

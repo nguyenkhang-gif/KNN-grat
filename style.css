@@ -382,13 +382,6 @@ body {
   box-shadow: 0 10px 20px -8px rgba(122, 162, 247, 0.55);
 }
 
-.btn-ghost {
-  flex: 1;
-  background: transparent;
-  color: var(--ink-soft);
-  border: 1.5px solid var(--mint-100);
-}
-
 .rsvp-thanks {
   margin: 16px 0 0;
   font-size: 15.5px;
