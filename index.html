@@ -64,6 +64,38 @@ git push origin main
 
 npm run build
 &gt; Compiling invite... done ✔</pre>
+    <pre class="code-col code-col-3">function rsvp(attending, message) {
+  const status = attending ? "sẽ đến 🎉" : "vắng mặt";
+  sendToSheet({ status, message });
+  return `Bạn ${status}`;
+}
+
+const EVENT_DATE = new Date(
+  "2026-07-24T08:30:00+07:00"
+);
+
+while (daysUntil(EVENT_DATE) > 0) {
+  countdown.render();
+  await sleep(1000);
+}
+
+// 🎓 graduation.confirmed = true
+function rsvp(attending, message) {
+  const status = attending ? "sẽ đến 🎉" : "vắng mặt";
+  sendToSheet({ status, message });
+  return `Bạn ${status}`;
+}
+
+const EVENT_DATE = new Date(
+  "2026-07-24T08:30:00+07:00"
+);
+
+while (daysUntil(EVENT_DATE) > 0) {
+  countdown.render();
+  await sleep(1000);
+}
+
+// 🎓 graduation.confirmed = true</pre>
     <pre class="code-col code-col-2">&lt;section class="invite"&gt;
   &lt;h1&gt;Lễ Tốt Nghiệp&lt;/h1&gt;
   &lt;p&gt;24.07.2026 — 08:30&lt;/p&gt;
@@ -187,7 +219,7 @@ export default function App() {
     <p class="rsvp-text">Sự hiện diện của bạn là niềm vinh hạnh lớn</p>
 
     <form id="rsvp-form" class="rsvp-form">
-      <input type="text" id="guest-name" placeholder="Tên của bạn" required />
+      <textarea id="guest-message" placeholder="Nếu muốn, bạn có thể để lại cho mình một lời nhắn nhé 💌" rows="2"></textarea>
       <div class="rsvp-buttons">
         <button type="submit" class="btn btn-primary" data-answer="yes">Tôi sẽ đến 🎉</button>
         <button type="submit" class="btn btn-ghost" data-answer="no">Xin lỗi, không thể đến</button>

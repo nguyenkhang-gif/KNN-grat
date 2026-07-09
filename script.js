@@ -1,17 +1,32 @@
+// Dán URL Web App sau khi deploy Google Apps Script (xem hướng dẫn kèm theo)
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7P1nQhWlrbYUmipuZi74efA0_JhvPvz55E9co4XK5G7RJPKdTY3gkzakvYDoxZYrw/exec";
+
 const form = document.getElementById("rsvp-form");
 const thanks = document.getElementById("rsvp-thanks");
-const nameInput = document.getElementById("guest-name");
+const messageInput = document.getElementById("guest-message");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const submitter = event.submitter;
   const answer = submitter ? submitter.dataset.answer : "yes";
-  const guestName = nameInput.value.trim() || "bạn";
+  const guestMessage = messageInput.value.trim();
+
+  if (GOOGLE_SCRIPT_URL.includes("YOUR_DEPLOYMENT_ID") === false) {
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        attending: answer,
+        message: guestMessage,
+      }),
+    }).catch(() => {});
+  }
 
   thanks.textContent =
     answer === "yes"
-      ? `Cảm ơn ${guestName} đã xác nhận tham dự! Hẹn gặp lại tại lễ tốt nghiệp 🎓`
-      : `Cảm ơn ${guestName} đã phản hồi. Rất tiếc vì không thể gặp bạn hôm đó`;
+      ? `Cảm ơn bạn đã xác nhận tham dự! Hẹn gặp lại tại lễ tốt nghiệp 🎓`
+      : `Cảm ơn bạn đã phản hồi. Rất tiếc vì không thể gặp bạn hôm đó`;
 
   thanks.classList.remove("hidden");
   form.classList.add("hidden");

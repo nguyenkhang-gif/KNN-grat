@@ -69,6 +69,14 @@ body {
   animation: scroll-up 60s linear infinite reverse;
 }
 
+.code-col-3 {
+  left: 50%;
+  width: 380px;
+  margin-left: -190px;
+  opacity: 0.28;
+  animation: scroll-up 38s linear infinite;
+}
+
 @keyframes scroll-up {
   from { transform: translateY(0); }
   to { transform: translateY(-50%); }
@@ -131,7 +139,7 @@ body {
   margin: 0 0 18px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--mint-600);
 }
@@ -159,14 +167,14 @@ body {
   font-family: "Playfair Display", serif;
   font-style: italic;
   font-weight: 600;
-  font-size: 26px;
+  font-size: 29px;
   margin: 4px 0 0;
   color: var(--mint-800);
 }
 
 .nickname {
   margin: 2px 0 0;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--ink-soft);
 }
 
@@ -189,13 +197,13 @@ body {
 .degree {
   margin: 0;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 17px;
   color: var(--ink);
 }
 
 .school {
   margin: 4px 0 20px;
-  font-size: 13.5px;
+  font-size: 15px;
   color: var(--ink-soft);
 }
 
@@ -220,14 +228,14 @@ body {
 }
 
 .countdown-num {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--mint-800);
   font-variant-numeric: tabular-nums;
 }
 
 .countdown-label {
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--ink-soft);
@@ -236,7 +244,7 @@ body {
 .countdown-done {
   margin: 0;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--mint-800);
 }
 
@@ -297,7 +305,7 @@ body {
 
 .info-label {
   margin: 0;
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--mint-600);
@@ -306,7 +314,7 @@ body {
 
 .info-value {
   margin: 2px 0 0;
-  font-size: 13px;
+  font-size: 14.5px;
   line-height: 1.4;
   color: var(--ink);
 }
@@ -318,7 +326,7 @@ body {
   padding: 12px 22px;
   font-family: inherit;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15.5px;
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -330,7 +338,7 @@ body {
 
 .rsvp-text {
   margin: 0 0 14px;
-  font-size: 13.5px;
+  font-size: 15px;
   color: var(--ink-soft);
   font-style: italic;
 }
@@ -341,19 +349,24 @@ body {
   gap: 10px;
 }
 
-#guest-name {
+#guest-message {
   width: 100%;
   padding: 11px 16px;
-  border-radius: 999px;
+  border-radius: 18px;
   border: 1.5px solid var(--mint-200);
   font-family: inherit;
-  font-size: 14px;
+  font-size: 15.5px;
   background: var(--cream);
   color: var(--ink);
   outline: none;
+  resize: vertical;
 }
 
-#guest-name:focus {
+#guest-message::placeholder {
+  color: var(--ink-soft);
+}
+
+#guest-message:focus {
   border-color: var(--mint-400);
 }
 
@@ -378,7 +391,7 @@ body {
 
 .rsvp-thanks {
   margin: 16px 0 0;
-  font-size: 14px;
+  font-size: 15.5px;
   font-weight: 600;
   color: var(--green);
   background: rgba(158, 206, 106, 0.1);
