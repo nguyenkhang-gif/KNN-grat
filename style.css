@@ -186,6 +186,10 @@ body {
   color: var(--mint-400);
 }
 
+.divider span {
+  font-size: 22px;
+}
+
 .divider::before,
 .divider::after {
   content: "";
