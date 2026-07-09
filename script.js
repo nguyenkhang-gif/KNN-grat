@@ -4,6 +4,39 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7P1nQhWlrbY
 const form = document.getElementById("rsvp-form");
 const thanks = document.getElementById("rsvp-thanks");
 const messageInput = document.getElementById("guest-message");
+const sendButton = form.querySelector(".btn-primary");
+
+const CONFETTI_EMOJI = ["🎉", "🎓", "✨", "💫", "🎊"];
+
+function launchConfetti(originEl) {
+  const rect = originEl.getBoundingClientRect();
+  const originX = rect.left + rect.width / 2;
+  const originY = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 18; i++) {
+    const piece = document.createElement("span");
+    piece.className = "confetti-piece";
+    piece.textContent = CONFETTI_EMOJI[Math.floor(Math.random() * CONFETTI_EMOJI.length)];
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 70 + Math.random() * 110;
+    const tx1 = Math.cos(angle) * distance;
+    const ty1 = Math.sin(angle) * distance - 40;
+    const rot = (Math.random() * 360 - 180).toFixed(0) + "deg";
+
+    piece.style.setProperty("--tx0", "0px");
+    piece.style.setProperty("--ty0", "0px");
+    piece.style.setProperty("--tx1", `${tx1}px`);
+    piece.style.setProperty("--ty1", `${ty1}px`);
+    piece.style.setProperty("--rot", rot);
+    piece.style.left = `${originX}px`;
+    piece.style.top = `${originY}px`;
+    piece.style.animationDelay = `${Math.random() * 0.15}s`;
+
+    document.body.appendChild(piece);
+    piece.addEventListener("animationend", () => piece.remove());
+  }
+}
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -21,10 +54,14 @@ form.addEventListener("submit", (event) => {
     }).catch(() => {});
   }
 
-  thanks.textContent = "Cảm ơn bạn! Lời nhắn đã được gửi đến KNN 🎓";
+  sendButton.classList.add("is-sending");
+  launchConfetti(sendButton);
 
-  thanks.classList.remove("hidden");
-  form.classList.add("hidden");
+  setTimeout(() => {
+    thanks.textContent = "Cảm ơn bạn! Lời nhắn đã được gửi đến KNN 🎓";
+    thanks.classList.remove("hidden");
+    form.classList.add("hidden");
+  }, 350);
 });
 
 const EVENT_DATE = new Date("2026-07-24T08:30:00+07:00");
